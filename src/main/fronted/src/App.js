@@ -1,11 +1,17 @@
-import './App.css';
-import Chatbot from "./Chatbot";
-import Chatbot_Gemini from "./Chatbot_Gemini";
+import './assets/styles/App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Main from "./pages/main/main";
+import Login from "./pages/login/login";
 
 function App() {
   return (
     <div className="App">
-      <Chatbot_Gemini />
+        <Router>
+            <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </Router>
     </div>
   );
 }

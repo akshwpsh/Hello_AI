@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import run from './gemini';
+import run from '../../utils/gemini';
 
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);

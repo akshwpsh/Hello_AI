@@ -1,0 +1,131 @@
+.frame-page {
+    width: 100%;
+    height: 100%;
+}
+
+.frame-page .inputs {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 451px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.frame-page .inputs .logo {
+    flex-shrink: 0;
+    width: 100%;
+    height: 82px;
+    color: #3A89FF;
+    font-family: "Open Sans";
+    font-size: 72px;
+    line-height: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.frame-page .inputs .input {
+    flex-shrink: 0;
+    width: 451px;
+    height: 40px;
+    border-radius: 8px;
+    padding: 16px;
+    border: none;
+    outline: none;
+    background: #EAEAEA;
+    font-size: 16px;
+}
+.frame-page .inputs .text- {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#4C4C57;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame-page .inputs .frame-- {
+    width: 451px;
+    border-radius: 15px;
+    padding: 16px;
+    background: #3A89FF;
+}
+.frame-page .inputs .frame-- .text--3 {
+    color: #FFFFFF;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    color: #3A89FF;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .frame-page .text- {
+        top: 70%;
+        font-size: 10px;
+    }
+
+    .frame-page .inputs {
+        top: 30%;
+        row-gap: 15px;
+    }
+
+    .frame-page .inputs .helloai {
+        font-size: 10vw;
+    }
+
+    .frame-page .inputs .frame- .text--1,
+    .frame-page .inputs .frame--1 .text--2 {
+        font-size: 5vw;
+    }
+
+    .frame-page .inputs .frame-- .text--3 {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .frame-page .text- {
+        top: 60%;
+        font-size: 8px;
+    }
+
+    .frame-page .inputs {
+        top: 30%;
+        row-gap: 10px;
+    }
+
+    .frame-page .inputs .helloai {
+        font-size: 12vw;
+    }
+
+    .frame-page .inputs .frame- .text--1,
+    .frame-page .inputs .frame--1 .text--2 {
+        font-size: 6vw;
+    }
+
+    .frame-page .inputs .frame-- .text--3 {
+        font-size: 6vw;
+    }
+}
