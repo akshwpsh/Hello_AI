@@ -19,7 +19,6 @@ const Login = () => {
                     계정이 없으신가요?&nbsp;&nbsp;<a href={'/register'} className={'link'}>회원가입</a>
                 </div>
             </div>
-
         </div>
     );
 }
