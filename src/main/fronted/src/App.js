@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Main from "./pages/main/main";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
-import Chatbot from "./pages/AI_example/Chatbot_Gemini";
 import Account from "./pages/AccountSetting/AccountSetting";
 import Gemini from "./pages/AI/Gemini";
+import Wordbook from "./pages/wordbook/wordbook";
 
 function App() {
   return (
@@ -15,10 +15,9 @@ function App() {
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/ai" element={<Chatbot />} />
                 <Route path="/account" element={<Account />} />
                 <Route path="/gemini" element={<Gemini />} />
-
+                <Route path="/wordbook" element={<Wordbook />} />
             </Routes>
         </Router>
     </div>

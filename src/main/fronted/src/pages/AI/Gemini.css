@@ -59,6 +59,9 @@
 .gemini-page .info .buttons .button:nth-child(2) {
     margin-left: 20px; /* 이전 버튼과 다음 버튼 사이의 간격을 설정 */
 }
+.gemini-page .info .buttons .button:nth-child(3) {
+    margin-left: 20px; /* 이전 버튼과 다음 버튼 사이의 간격을 설정 */
+}
 
 .gemini-page .info .button {
     flex: 1; /* 버튼의 너비를 동일하게 만듭니다. */

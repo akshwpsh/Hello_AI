@@ -1,0 +1,68 @@
+.wordbook {
+    width: 100%;
+    height: 100vh; /* 100%에서 100vh로 변경하여 뷰포트 전체 높이를 사용 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 가운데 정렬 유지 */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.wordbook .info {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.wordbook .info .logo {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wordbook .info .itemGroup {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.wordbook .info .itemGroup .wordItem {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.wordbook .info .itemGroup .wordItem .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.wordbook .info .itemGroup .wordItem .content .info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    flex-grow: 1;
+}
+
+.wordbook .info .itemGroup .wordItem .content .info .word {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wordbook .info .itemGroup .wordItem .content .info .meaning {
+    font-size: 14px;
+    color: #777;
+}
+
+.wordbook .info .itemGroup .wordItem .button {
+    color: #f00;
+    cursor: pointer;
+}

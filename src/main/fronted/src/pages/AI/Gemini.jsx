@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './Gemini.css';
+import axios from "axios";
 import Header from "../../components/header/header";
 import run from '../../utils/gemini';
 import {FaStar} from "react-icons/fa";
@@ -60,6 +61,26 @@ const Gemini = () => {
         return wordList.map(item => item.word);
     }
 
+    const saveWord = async (word, meaning) => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/words/save', {
+                word,
+                meaning
+            }, {
+                headers: {
+                    'Authorization' : `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+
+            if (response.status === 200) {
+                alert('단어가 저장되었습니다.');
+            }
+        } catch (error) {
+            console.error('오류 발생!', error);
+            alert('오류 발생!');
+        }
+    }
+
     return (
         <div className="gemini-page">
             <Header/>
@@ -77,9 +98,9 @@ const Gemini = () => {
                 {wordList.length > 0 && !loading && !loading ? (
                     <div>
                         <div className={'buttons'}>
-                            {/*<div className={'button'} >*/}
-                            {/*    <FaStar/> /!* 별 모양 아이콘을 추가합니다. *!/*/}
-                            {/*</div>*/}
+                            <div className={'button'} onClick={() => saveWord(wordList[currentWordIndex].word, wordList[currentWordIndex].meaning)} >
+                                <FaStar/> {/* 별 모양 아이콘을 추가합니다. */}
+                            </div>
                             <div className={'button'} onClick={prevWord}>
                                 <div className={'button_text'}>
                                     이전
