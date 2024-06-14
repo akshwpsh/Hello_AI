@@ -9,9 +9,13 @@ const Header = () => {
     const goAccount = () => {
         navigate('/account');
     };
+
+    const goHome = () => {
+        navigate('/');
+    }
     return (
         <header>
-            <div className={'logo'}>
+            <div className={'logo'} onClick={goHome}>
                 HelloAI
             </div>
             <div className={'icon_back'} onClick={goAccount}>

@@ -59,10 +59,4 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-//    @GetMapping("/me")
-//    public ResponseEntity<User> getUserDetails() {
-//        User user = userService.getUserBySecurity();
-//        return new ResponseEntity<>(user, HttpStatus.OK);
-//    }
-
 }

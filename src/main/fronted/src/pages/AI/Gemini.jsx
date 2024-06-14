@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import './Gemini.css';
 import Header from "../../components/header/header";
 import run from '../../utils/gemini';
+import {FaStar} from "react-icons/fa";
 
 const Gemini = () => {
     const [loading, setLoading] = useState(false);
@@ -9,9 +10,9 @@ const Gemini = () => {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [showMeaning, setShowMeaning] = useState(false);
 
-
     const getWord = async () => {
-        const message = "토익 600점이 알아야하는 영어 단어를 10개의 단어와 뜻만 /로 가공할수 있게 말해줘. *같은 특수문자와 번호도 제외해서 제목없이 내용만 말해줘.";
+        const message = getAllWords() +"위 리스트를 제외한 토익 600점이 알아야하는 영어 단어를 50개의 단어와 뜻만 /로 가공할수 있게 말해줘. 반드시 *같은 특수문자와 단어의 번호도 제외해서 제목없이 내용만 말해줘.";
+        console.log(message);
         setLoading(true);
         try {
             const aiResponse = await run(message);
@@ -25,7 +26,7 @@ const Gemini = () => {
                 };
             });
 
-            setWordList(wordObj);
+            setWordList([...wordList, ...wordObj]); // 기존 단어 리스트에 새로운 단어를 추가합니다.
         } catch (error) {
             console.error('오류 발생!', error);
             alert('오류 발생!');
@@ -34,38 +35,80 @@ const Gemini = () => {
         }
     }
 
-    const nextWord = () => {
-        if(currentWordIndex < wordList.length - 1) {
+    const nextWord = async () => {
+        if (currentWordIndex < wordList.length - 1) {
             setCurrentWordIndex(currentWordIndex + 1);
+            setShowMeaning(false); // 다음 단어로 넘어갈 때 뜻을 숨깁니다.
+        } else {
+            await getWord();
         }
     }
+
+    const prevWord = () => {
+        if(currentWordIndex > 0) {
+            setCurrentWordIndex(currentWordIndex - 1);
+            setShowMeaning(false); // 이전 단어로 넘어갈 때 뜻을 숨깁니다.
+        }
+    }
+
 
     const showWordMeaning = () => {
         setShowMeaning(!showMeaning); // 뜻을 보여주는 상태를 true로 변경합니다.
     }
 
+    const getAllWords = () => {
+        return wordList.map(item => item.word);
+    }
+
     return (
         <div className="gemini-page">
             <Header/>
-            <div className={'inputs'}>
-                <div className={'logo'}>
-                    단어를 외워볼까요?
-                </div>
-                <div className={'frame--'} onClick={getWord}>
-                    <div className={'text--3'}>
-                        단어 받기
-                    </div>
-                </div>
-                {loading && <span className="messageWait">답변을 기다리고 있습니다</span>}
-                {wordList.length > 0 && !loading && (
-                    <div>
-                        <p>단어: {wordList[currentWordIndex].word}</p>
-                        {showMeaning && <p>뜻: {wordList[currentWordIndex].meaning}</p>} {/* showMeaning 상태가 true일 때만 뜻을 보여줍니다. */}
+            <div className={'info'}>
 
-                        <button onClick={nextWord}>다음</button>
-                        <button onClick={showWordMeaning}>뜻 보기</button>
+                {loading && <div className="messageWait">답변을 기다리고 있습니다</div>}
+                {wordList.length > 0 && !loading && (
+                    <div className={'texts'}>
+                        <p className={'text'}>단어: {wordList[currentWordIndex].word}</p>
+                        <p className={'text'}>뜻: { showMeaning ?  wordList[currentWordIndex].meaning :  '???'}</p> {/* showMeaning 상태가 true일 때만 뜻을 보여줍니다. */}
                     </div>
                 )}
+
+
+                {wordList.length > 0 && !loading && !loading ? (
+                    <div>
+                        <div className={'buttons'}>
+                            {/*<div className={'button'} >*/}
+                            {/*    <FaStar/> /!* 별 모양 아이콘을 추가합니다. *!/*/}
+                            {/*</div>*/}
+                            <div className={'button'} onClick={prevWord}>
+                                <div className={'button_text'}>
+                                    이전
+                                </div>
+                            </div>
+                            <div className={'button'} onClick={nextWord}>
+                                <div className={'button_text'}>
+                                    다음
+                                </div>
+                            </div>
+                        </div>
+                        <div className={'buttons'}>
+                            <div className={'button'} onClick={showWordMeaning}>
+                            <div className={'button_text'}>
+                                    {showMeaning ? '뜻 숨기기' : '뜻 보기'}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    )
+                    : (
+                        <div className={'button'} onClick={getWord}>
+                            <div className={'button_text'}>
+                                단어 받기
+                            </div>
+                        </div>
+                    )
+                }
+
             </div>
         </div>
     );
