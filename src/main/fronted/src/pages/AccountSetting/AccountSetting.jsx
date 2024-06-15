@@ -18,7 +18,7 @@ const AccountSetting = () => {
                 return;
             }
             try {
-                const response = await axios.get('http://localhost:8080/me',{
+                const response = await axios.get('http://helloai.kro.kr:8089/me',{
                     headers: {
                         'Authorization' : `Bearer ${localStorage.getItem('token')}`
                     }
@@ -42,7 +42,7 @@ const AccountSetting = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8080/update', {
+            const response = await axios.post('http://helloai.kro.kr:8089/update', {
                 username,
                 email,
                 password,

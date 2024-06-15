@@ -63,7 +63,7 @@ const Gemini = () => {
 
     const saveWord = async (word, meaning) => {
         try {
-            const response = await axios.post('http://localhost:8080/api/words/save', {
+            const response = await axios.post('http://helloai.kro.kr:8089/api/words/save', {
                 word,
                 meaning
             }, {

@@ -11,7 +11,7 @@ const Wordbook = () => {
     useEffect(() => {
         const fetchWordList = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/words/list', {
+                const response = await axios.get('http://helloai.kro.kr:8089/api/words/list', {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -27,7 +27,7 @@ const Wordbook = () => {
 
     const deleteWord = async (id) => {
         try {
-            await axios.delete(`http://localhost:8080/api/words/delete/${id}`, {
+            await axios.delete(`http://helloai.kro.kr:8089/api/words/delete/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }
